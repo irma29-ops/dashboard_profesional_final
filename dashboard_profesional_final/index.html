@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard ejecutivo de ventas 2025">
+  <title>Dashboard Ejecutivo de Ventas 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">BI</div>
+        <div>
+          <strong>Sales Analytics</strong>
+          <span>Executive Dashboard</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Secciones del tablero">
+        <a class="nav-item active" href="#resumen"><span>01</span> Resumen</a>
+        <a class="nav-item" href="#tendencia"><span>02</span> Tendencia</a>
+        <a class="nav-item" href="#segmentos"><span>03</span> Segmentos</a>
+        <a class="nav-item" href="#detalle"><span>04</span> Detalle</a>
+      </nav>
+
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Datos cargados
+        <small>22 registros · Ene–Sep 2025</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar" id="resumen">
+        <div>
+          <p class="eyebrow">ANÁLISIS COMERCIAL · 2025</p>
+          <h1>Dashboard ejecutivo de ventas</h1>
+          <p class="subtitle">Seguimiento de ingresos, rentabilidad, productos, regiones y canales de venta.</p>
+        </div>
+        <div class="period-badge">
+          <span>Periodo analizado</span>
+          <strong>Enero – Septiembre 2025</strong>
+        </div>
+      </header>
+
+      <section class="filter-panel" aria-label="Filtros del tablero">
+        <div class="filter-title">
+          <span>Filtros</span>
+          <small>Los indicadores y gráficas se actualizan automáticamente</small>
+        </div>
+        <div class="filter-grid">
+          <label>
+            <span>Región</span>
+            <select id="filterRegion"><option value="Todas">Todas</option></select>
+          </label>
+          <label>
+            <span>Producto</span>
+            <select id="filterProducto"><option value="Todos">Todos</option></select>
+          </label>
+          <label>
+            <span>Canal</span>
+            <select id="filterCanal"><option value="Todos">Todos</option></select>
+          </label>
+          <button class="reset-btn" id="resetFilters" type="button">Restablecer filtros</button>
+        </div>
+      </section>
+
+      <section class="kpi-grid" aria-label="Indicadores principales">
+        <article class="kpi-card accent-purple">
+          <div class="kpi-icon">$</div>
+          <div class="kpi-content">
+            <span>Ingresos</span>
+            <strong id="statIngreso">—</strong>
+            <small id="statTransacciones">— transacciones</small>
+          </div>
+        </article>
+        <article class="kpi-card accent-green">
+          <div class="kpi-icon">↗</div>
+          <div class="kpi-content">
+            <span>Ganancia</span>
+            <strong id="statGanancia">—</strong>
+            <small id="statMargen">Margen —</small>
+          </div>
+        </article>
+        <article class="kpi-card accent-blue">
+          <div class="kpi-icon">#</div>
+          <div class="kpi-content">
+            <span>Unidades vendidas</span>
+            <strong id="statUnidades">—</strong>
+            <small id="statTicket">Ticket promedio —</small>
+          </div>
+        </article>
+        <article class="kpi-card accent-orange">
+          <div class="kpi-icon">★</div>
+          <div class="kpi-content">
+            <span>Mejor región</span>
+            <strong id="statRegion">—</strong>
+            <small id="statRegionValue">Por ingreso acumulado</small>
+          </div>
+        </article>
+      </section>
+
+      <section class="insight-card">
+        <div class="insight-label">Resumen ejecutivo</div>
+        <p id="executiveInsight">Analizando los datos...</p>
+      </section>
+
+      <section class="dashboard-grid" id="tendencia">
+        <article class="panel panel-wide">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">EVOLUCIÓN</span>
+              <h2>Ingresos y ganancia mensual</h2>
+            </div>
+            <span class="panel-note">MXN</span>
+          </div>
+          <div class="chart-box chart-large"><canvas id="chartTendencia"></canvas></div>
+        </article>
+
+        <article class="panel" id="segmentos">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">GEOGRAFÍA</span>
+              <h2>Rendimiento por región</h2>
+            </div>
+          </div>
+          <div class="chart-box"><canvas id="chartRegion"></canvas></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">PORTAFOLIO</span>
+              <h2>Participación por producto</h2>
+            </div>
+          </div>
+          <div class="chart-box"><canvas id="chartProducto"></canvas></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">CANALES</span>
+              <h2>En línea vs. presencial</h2>
+            </div>
+          </div>
+          <div class="chart-box"><canvas id="chartCanal"></canvas></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">RENTABILIDAD</span>
+              <h2>Margen vs. unidades</h2>
+            </div>
+          </div>
+          <div class="chart-box"><canvas id="chartScatter"></canvas></div>
+        </article>
+      </section>
+
+      <section class="panel table-panel" id="detalle">
+        <div class="panel-head table-heading">
+          <div>
+            <span class="panel-kicker">DETALLE</span>
+            <h2>Transacciones</h2>
+          </div>
+          <span class="record-count" id="recordCount">0 registros</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data-grid">
+            <thead>
+              <tr>
+                <th>Fecha</th><th>Región</th><th>Producto</th><th>Canal</th>
+                <th>Unidades</th><th>Precio unit.</th><th>Ingreso</th><th>Costo</th><th>Ganancia</th><th>Margen</th>
+              </tr>
+            </thead>
+            <tbody id="dataTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>Dashboard de Ventas 2025 · HTML + CSS + JavaScript + Chart.js</footer>
+    </main>
+  </div>
+
+  <script>
+    // Carga Chart.js con varios servidores de respaldo y después carga el tablero.
+    const chartSources = [
+      'https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js',
+      'https://unpkg.com/chart.js@4.4.4/dist/chart.umd.min.js'
+    ];
+
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    }
+
+    async function startDashboard() {
+      let chartLoaded = false;
+
+      for (const src of chartSources) {
+        try {
+          await loadScript(src);
+          if (typeof Chart !== 'undefined') {
+            chartLoaded = true;
+            break;
+          }
+        } catch (error) {
+          console.warn('No se pudo cargar Chart.js desde:', src);
+        }
+      }
+
+      if (!chartLoaded) {
+        document.getElementById('executiveInsight').textContent =
+          'No se pudo cargar la librería de gráficas. Revisa tu conexión a Internet y vuelve a cargar la página.';
+        return;
+      }
+
+      try {
+        await loadScript('js/data.js');
+        await loadScript('js/dashboard.js');
+      } catch (error) {
+        console.error(error);
+        document.getElementById('executiveInsight').textContent =
+          'No se pudieron cargar los datos o la lógica del dashboard. Revisa la consola del navegador.';
+      }
+    }
+
+    startDashboard();
+  </script>
+</body>
+</html>

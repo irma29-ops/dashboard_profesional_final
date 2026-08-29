@@ -1,0 +1,1485 @@
+:root{
+
+  --bg:#F4F7FB;
+
+  --surface:#FFFFFF;
+
+  --surface-soft:#F8FAFC;
+
+  --sidebar:#0F172A;
+
+  --text:#172033;
+
+  --muted:#64748B;
+
+  --line:#E2E8F0;
+
+  --purple:#2563EB;
+
+  --purple-soft:#EAF2FF;
+
+  --green:#059669;
+
+  --green-soft:#E7F7F1;
+
+  --blue:#0284C7;
+
+  --blue-soft:#E6F4FB;
+
+  --orange:#D97706;
+
+  --orange-soft:#FFF4E5;
+
+  --red:#DC4C64;
+
+  --shadow:0 8px 24px rgba(15,23,42,.06);
+
+}
+
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  margin:0;
+
+  background:var(--bg);
+
+  color:var(--text);
+
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+
+}
+
+button,
+select{
+  font:inherit;
+}
+
+
+/* =========================================================
+   ESTRUCTURA GENERAL
+========================================================= */
+
+.app-shell{
+
+  min-height:100vh;
+
+  display:grid;
+
+  grid-template-columns:
+    240px
+    minmax(0,1fr);
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+
+  position:sticky;
+
+  top:0;
+
+  height:100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0F172A 0%,
+      #111827 100%
+    );
+
+  color:#FFFFFF;
+
+  padding:
+    28px
+    20px;
+
+  display:flex;
+
+  flex-direction:column;
+
+}
+
+
+/* =========================================================
+   MARCA / LOGO
+========================================================= */
+
+.brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  padding:
+    0
+    8px
+    28px;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.08);
+
+}
+
+
+.brand-mark{
+
+  width:42px;
+
+  height:42px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563EB,
+      #1D4ED8
+    );
+
+  display:grid;
+
+  place-items:center;
+
+  font-weight:800;
+
+  letter-spacing:.5px;
+
+  color:#FFFFFF;
+
+  box-shadow:
+    0 8px 20px
+    rgba(37,99,235,.25);
+
+}
+
+
+.brand strong{
+
+  display:block;
+
+  font-size:14px;
+
+  color:#FFFFFF;
+
+}
+
+
+.brand span{
+
+  display:block;
+
+  margin-top:3px;
+
+  font-size:10px;
+
+  color:#94A3B8;
+
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+.nav-list{
+
+  display:grid;
+
+  gap:8px;
+
+  margin-top:28px;
+
+}
+
+
+.nav-item{
+
+  color:#94A3B8;
+
+  text-decoration:none;
+
+  font-size:13px;
+
+  padding:
+    11px
+    12px;
+
+  border-radius:8px;
+
+  display:flex;
+
+  gap:10px;
+
+  align-items:center;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    border .2s ease;
+
+}
+
+
+.nav-item span{
+
+  font-size:10px;
+
+  color:#64748B;
+
+}
+
+
+.nav-item:hover{
+
+  background:
+    rgba(255,255,255,.06);
+
+  color:#FFFFFF;
+
+}
+
+
+.nav-item.active{
+
+  background:
+    rgba(37,99,235,.18);
+
+  color:#FFFFFF;
+
+  border-left:
+    3px solid
+    #3B82F6;
+
+}
+
+
+.nav-item.active span{
+
+  color:#93C5FD;
+
+}
+
+
+/* =========================================================
+   ESTADO DE DATOS
+========================================================= */
+
+.sidebar-note{
+
+  margin-top:auto;
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  border-radius:10px;
+
+  padding:13px;
+
+  font-size:11px;
+
+  color:#CBD5E1;
+
+}
+
+
+.sidebar-note small{
+
+  display:block;
+
+  color:#94A3B8;
+
+  margin-top:5px;
+
+}
+
+
+.status-dot{
+
+  display:inline-block;
+
+  width:7px;
+
+  height:7px;
+
+  border-radius:50%;
+
+  background:#10B981;
+
+  margin-right:6px;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(16,185,129,.12);
+
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+========================================================= */
+
+.main-content{
+
+  min-width:0;
+
+  padding:
+    34px
+    38px
+    28px;
+
+  max-width:1550px;
+
+  width:100%;
+
+  margin:0 auto;
+
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.topbar{
+
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+
+  gap:24px;
+
+  margin-bottom:24px;
+
+}
+
+
+.eyebrow{
+
+  margin:
+    0
+    0
+    7px;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  letter-spacing:1.4px;
+
+  color:var(--purple);
+
+}
+
+
+h1{
+
+  margin:0;
+
+  font-size:30px;
+
+  line-height:1.15;
+
+  letter-spacing:-.8px;
+
+  color:var(--text);
+
+}
+
+
+.subtitle{
+
+  margin:
+    8px
+    0
+    0;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  max-width:650px;
+
+  line-height:1.6;
+
+}
+
+
+/* =========================================================
+   PERIODO
+========================================================= */
+
+.period-badge{
+
+  min-width:225px;
+
+  background:var(--surface);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:12px;
+
+  padding:
+    12px
+    14px;
+
+  text-align:right;
+
+  box-shadow:
+    0 4px 14px
+    rgba(15,23,42,.035);
+
+}
+
+
+.period-badge span{
+
+  display:block;
+
+  color:var(--muted);
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.7px;
+
+}
+
+
+.period-badge strong{
+
+  display:block;
+
+  font-size:12px;
+
+  margin-top:5px;
+
+  color:var(--text);
+
+}
+
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+.filter-panel{
+
+  background:var(--surface);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:12px;
+
+  padding:
+    15px
+    17px;
+
+  margin-bottom:18px;
+
+  box-shadow:
+    var(--shadow);
+
+}
+
+
+.filter-title{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  align-items:center;
+
+  margin-bottom:12px;
+
+}
+
+
+.filter-title span{
+
+  font-size:12px;
+
+  font-weight:700;
+
+  color:var(--text);
+
+}
+
+
+.filter-title small{
+
+  font-size:10px;
+
+  color:var(--muted);
+
+}
+
+
+.filter-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(150px,1fr))
+    auto;
+
+  gap:12px;
+
+  align-items:end;
+
+}
+
+
+.filter-grid label span{
+
+  display:block;
+
+  font-size:10px;
+
+  font-weight:600;
+
+  color:var(--muted);
+
+  margin:
+    0
+    0
+    6px
+    2px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.5px;
+
+}
+
+
+.filter-grid select{
+
+  width:100%;
+
+  height:39px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:8px;
+
+  background:#FFFFFF;
+
+  color:var(--text);
+
+  padding:
+    0
+    11px;
+
+  outline:none;
+
+  transition:
+    border .2s ease,
+    box-shadow .2s ease;
+
+}
+
+
+.filter-grid select:hover{
+
+  border-color:#CBD5E1;
+
+}
+
+
+.filter-grid select:focus{
+
+  border-color:#60A5FA;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.10);
+
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.reset-btn{
+
+  height:39px;
+
+  border:0;
+
+  border-radius:8px;
+
+  background:#2563EB;
+
+  color:#FFFFFF;
+
+  padding:
+    0
+    16px;
+
+  font-size:11px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:
+    background .2s ease,
+    transform .1s ease;
+
+}
+
+
+.reset-btn:hover{
+
+  background:#1D4ED8;
+
+}
+
+
+.reset-btn:active{
+
+  transform:translateY(1px);
+
+}
+
+
+/* =========================================================
+   KPIs
+========================================================= */
+
+.kpi-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+
+  margin-bottom:18px;
+
+}
+
+
+.kpi-card{
+
+  background:var(--surface);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:12px;
+
+  padding:17px;
+
+  display:flex;
+
+  gap:13px;
+
+  align-items:center;
+
+  min-width:0;
+
+  box-shadow:
+    var(--shadow);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+
+}
+
+
+.kpi-card:hover{
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 28px
+    rgba(15,23,42,.08);
+
+}
+
+
+/* =========================================================
+   ICONOS KPI
+========================================================= */
+
+.kpi-icon{
+
+  width:42px;
+
+  height:42px;
+
+  border-radius:10px;
+
+  display:grid;
+
+  place-items:center;
+
+  font-size:15px;
+
+  font-weight:800;
+
+  flex:
+    0
+    0
+    auto;
+
+}
+
+
+.accent-purple .kpi-icon{
+
+  color:#2563EB;
+
+  background:#EAF2FF;
+
+}
+
+
+.accent-green .kpi-icon{
+
+  color:#059669;
+
+  background:#E7F7F1;
+
+}
+
+
+.accent-blue .kpi-icon{
+
+  color:#0284C7;
+
+  background:#E6F4FB;
+
+}
+
+
+.accent-orange .kpi-icon{
+
+  color:#D97706;
+
+  background:#FFF4E5;
+
+}
+
+
+/* =========================================================
+   CONTENIDO KPI
+========================================================= */
+
+.kpi-content{
+
+  min-width:0;
+
+}
+
+
+.kpi-content span{
+
+  display:block;
+
+  font-size:10px;
+
+  color:var(--muted);
+
+  text-transform:uppercase;
+
+  letter-spacing:.55px;
+
+  font-weight:600;
+
+}
+
+
+.kpi-content strong{
+
+  display:block;
+
+  font-size:22px;
+
+  line-height:1.15;
+
+  margin-top:5px;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  color:var(--text);
+
+}
+
+
+.kpi-content small{
+
+  display:block;
+
+  margin-top:5px;
+
+  color:var(--muted);
+
+  font-size:10px;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+}
+
+
+/* =========================================================
+   RESUMEN EJECUTIVO
+========================================================= */
+
+.insight-card{
+
+  background:
+    linear-gradient(
+      115deg,
+      #EFF6FF,
+      #F8FAFC
+    );
+
+  border:
+    1px solid
+    #DCE7F5;
+
+  border-radius:12px;
+
+  padding:
+    16px
+    18px;
+
+  margin-bottom:18px;
+
+  display:grid;
+
+  grid-template-columns:
+    150px
+    1fr;
+
+  gap:18px;
+
+  align-items:center;
+
+}
+
+
+.insight-label{
+
+  font-size:10px;
+
+  font-weight:800;
+
+  letter-spacing:.8px;
+
+  color:#2563EB;
+
+  text-transform:uppercase;
+
+}
+
+
+.insight-card p{
+
+  margin:0;
+
+  font-size:12px;
+
+  line-height:1.65;
+
+  color:#475569;
+
+}
+
+
+/* =========================================================
+   GRID DE GRÁFICOS
+========================================================= */
+
+.dashboard-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:15px;
+
+}
+
+
+/* =========================================================
+   PANELES
+========================================================= */
+
+.panel{
+
+  background:var(--surface);
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:12px;
+
+  padding:
+    18px
+    18px
+    14px;
+
+  box-shadow:
+    var(--shadow);
+
+  min-width:0;
+
+}
+
+
+.panel-wide{
+
+  grid-column:
+    1 / -1;
+
+}
+
+
+.panel-head{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  gap:12px;
+
+  padding-bottom:12px;
+
+  border-bottom:
+    1px solid
+    #EEF2F7;
+
+}
+
+
+.panel-kicker{
+
+  font-size:9px;
+
+  letter-spacing:1px;
+
+  font-weight:800;
+
+  color:#2563EB;
+
+}
+
+
+.panel h2{
+
+  font-size:14px;
+
+  margin:
+    4px
+    0
+    0;
+
+  letter-spacing:-.2px;
+
+  color:var(--text);
+
+}
+
+
+.panel-note,
+.record-count{
+
+  font-size:10px;
+
+  color:var(--muted);
+
+  background:#F8FAFC;
+
+  border:
+    1px solid
+    var(--line);
+
+  padding:
+    5px
+    8px;
+
+  border-radius:6px;
+
+}
+
+
+/* =========================================================
+   GRÁFICAS
+========================================================= */
+
+.chart-box{
+
+  position:relative;
+
+  height:285px;
+
+  margin-top:11px;
+
+}
+
+
+.chart-large{
+
+  height:320px;
+
+}
+
+
+/* =========================================================
+   TABLA
+========================================================= */
+
+.table-panel{
+
+  margin-top:15px;
+
+}
+
+
+.table-heading{
+
+  align-items:center;
+
+}
+
+
+.table-scroll{
+
+  overflow:auto;
+
+  max-height:430px;
+
+  margin-top:12px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:8px;
+
+}
+
+
+.data-grid{
+
+  border-collapse:collapse;
+
+  width:100%;
+
+  min-width:960px;
+
+  font-size:11px;
+
+}
+
+
+/* =========================================================
+   ENCABEZADOS TABLA
+========================================================= */
+
+.data-grid th{
+
+  position:sticky;
+
+  top:0;
+
+  background:#F1F5F9;
+
+  color:#475569;
+
+  text-transform:uppercase;
+
+  letter-spacing:.45px;
+
+  font-size:9px;
+
+  text-align:left;
+
+  padding:
+    10px
+    12px;
+
+  border-bottom:
+    1px solid
+    #CBD5E1;
+
+  z-index:2;
+
+}
+
+
+/* =========================================================
+   CELDAS
+========================================================= */
+
+.data-grid td{
+
+  padding:
+    9px
+    12px;
+
+  border-bottom:
+    1px solid
+    #EEF2F7;
+
+  color:#475569;
+
+  white-space:nowrap;
+
+}
+
+
+.data-grid td.num{
+
+  text-align:right;
+
+  font-variant-numeric:
+    tabular-nums;
+
+}
+
+
+.data-grid tbody tr{
+
+  transition:
+    background .15s ease;
+
+}
+
+
+.data-grid tbody tr:hover{
+
+  background:#F8FAFC;
+
+}
+
+
+/* =========================================================
+   ETIQUETAS CANAL
+========================================================= */
+
+.pill{
+
+  display:inline-block;
+
+  padding:
+    3px
+    8px;
+
+  border-radius:20px;
+
+  font-size:9px;
+
+  font-weight:700;
+
+}
+
+
+.pill.online{
+
+  background:#E7F7F1;
+
+  color:#047857;
+
+}
+
+
+.pill.presencial{
+
+  background:#FFF4E5;
+
+  color:#B45309;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+  text-align:center;
+
+  color:#94A3B8;
+
+  font-size:10px;
+
+  margin-top:23px;
+
+  padding:10px;
+
+}
+
+
+/* =========================================================
+   SIN DATOS
+========================================================= */
+
+.empty-state{
+
+  text-align:center!important;
+
+  padding:34px!important;
+
+  color:var(--muted)!important;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE 1150
+========================================================= */
+
+@media(max-width:1150px){
+
+  .kpi-grid{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+
+  .filter-grid{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+
+  .reset-btn{
+
+    width:100%;
+
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE 860
+========================================================= */
+
+@media(max-width:860px){
+
+  .app-shell{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .sidebar{
+
+    position:relative;
+
+    height:auto;
+
+    padding:
+      18px
+      20px;
+
+  }
+
+
+  .nav-list{
+
+    display:none;
+
+  }
+
+
+  .sidebar-note{
+
+    display:none;
+
+  }
+
+
+  .brand{
+
+    border:0;
+
+    padding:0;
+
+  }
+
+
+  .main-content{
+
+    padding:
+      24px
+      18px;
+
+  }
+
+
+  .topbar{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+
+  .period-badge{
+
+    text-align:left;
+
+    min-width:0;
+
+  }
+
+
+  .dashboard-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .panel-wide{
+
+    grid-column:auto;
+
+  }
+
+
+  .filter-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .kpi-grid{
+
+    grid-template-columns:
+      1fr
+      1fr;
+
+  }
+
+
+  .insight-card{
+
+    grid-template-columns:1fr;
+
+    gap:5px;
+
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE MÓVIL
+========================================================= */
+
+@media(max-width:560px){
+
+  .kpi-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  h1{
+
+    font-size:25px;
+
+  }
+
+
+  .main-content{
+
+    padding:
+      20px
+      13px;
+
+  }
+
+
+  .filter-title{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+
+  .chart-box,
+  .chart-large{
+
+    height:265px;
+
+  }
+
+}
