@@ -30,3 +30,8 @@ Dashboard interactivo desarrollado con HTML, CSS, JavaScript y Chart.js.
 ## Autor
 
 Proyecto de análisis y visualización de datos.
+
+<img width="1872" height="937" alt="image" src="https://github.com/user-attachments/assets/d6409681-e167-4dfa-98ad-0033fd4b06bc" />
+
+<img width="1847" height="952" alt="image" src="https://github.com/user-attachments/assets/85f6cce9-a05a-4603-a26b-2f27438fd129" />
+
